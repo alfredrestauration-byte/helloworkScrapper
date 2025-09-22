@@ -333,6 +333,7 @@ class CategorieJob1(str, Enum):
     HOTELLERIE = "Hôtellerie"
     VIDE = ""
     NON_SPECIFIE = "Non spécifié"
+    GARBAGE = "Support & Back-office"
 
 
 class CategorieJob2(str, Enum):
@@ -580,6 +581,8 @@ ia_cols = [col for col in combined_data.columns if col.startswith("IA_")]
 
 # Replace "" with "Non spécifié" in those columns only
 combined_data[ia_cols] = combined_data[ia_cols].replace("", "Non spécifié")
+
+combined_data["IA_Catégorie_Job_1"] = combined_data["IA_Catégorie_Job_1"].replace("Support & Back-office","Non spécifié")
 
 # -------- FIN DATA VALIDATION EMPTY VALUES OPENAI ----------------------------------------------------------------------------------------------
 
