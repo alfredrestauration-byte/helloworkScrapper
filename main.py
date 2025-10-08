@@ -276,6 +276,9 @@ new_data["Source"] = "hellowork"
 print(f"Post geo new data Check length {len(new_data)}")
 print(f"Post geo Check existing length {len(existing_data)}")
 
+# Remove rows that already exist in existing_data to save computational time
+new_data = new_data[~new_data["url"].isin(existing_data["url"])]
+
 # -------- DEBUT CHATGPT DATA ENRICHMENT --------------------------------------------------------------------------------------------
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
